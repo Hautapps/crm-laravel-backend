@@ -1,67 +1,73 @@
-Stack: PHP, Laravel, Postgres
+Stack: PHP 8.4.11 / Laravel Framework 12.24.0, Postgres 17.6
 
-## Docker
+# Getting Started
+
+## 1. Docker
 
 Install Docker
 
-## Environment
+## 2. Environment
 
 Copy .env.example to .env file
 
-## Start containers
+## 3. Start containers
 
 Using Sail here but basically the same as docker compose
 
-(sudo) ./vendor/bin/sail up -d
+`./vendor/bin/sail up -d`
 
-## Run migrations and seed tables
+## 4. Run migrations and seed tables
 
-./vendor/bin/sail php artisan migrate --seed
+`./vendor/bin/sail php artisan migrate --seed`
 
-## Create Api Key for Admin user
+## 5. Create Api Key for Admin user
 
-./vendor/bin/sail php artisan tokens:generate admin@example.com
+`./vendor/bin/sail php artisan tokens:generate admin@example.com`
 
-## Tables
+---
+
+# Tables
 - customers: Customers for testing api
 - users: Api users here
 - api_tokens: Access tokens for Api Users
 - ... Laravel related tables
 
-## Routes
+---
 
-- Search Customers -
+# Routes
 
-GET /api/customers
+## Search Customers
 
-q: (String) = full text search
-email: (String)
-createdAtMin: (Date)
-createdAtMax: (Date)
-limit: (Int) = default 10
-page: (Int) = default 1
-order: (String) = "asc"|"desc"
-sortBy: (String) = "name"|"email"|"createdAt" 
+**GET /api/customers**
 
-- Get single Customer -
+- q: (String) = Full text search
+- email: (String)
+- createdAtMin: (Date)
+- createdAtMax: (Date)
+- limit: (Int) = default 10
+- page: (Int) = default 1
+- order: (String) = "asc"|"desc"
+- sortBy: (String) = "name"|"email"|"createdAt" 
 
-GET /api/customers/{id}
+## Get single Customer
 
-- Create new Customer -
+**GET /api/customers/{id}**
 
-POST /api/customers
+## Create new Customer
 
-name: String
-email: String
+**POST /api/customers**
 
-- Update Customer -
+- name: String
+- email: String
 
-PUT /api/customers/{id}
+## Update Customer
 
-name: String
+**PUT /api/customers/{id}**
 
-- Delete Customer -
+- name: String
 
-Note: Soft delete
+## Delete Customer
 
-DELETE /api/customers/{id}
+***Note: Soft delete***
+
+**DELETE /api/customers/{id}**
